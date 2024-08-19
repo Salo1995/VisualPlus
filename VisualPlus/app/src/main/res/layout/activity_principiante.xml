@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/my_backgroun"
+    tools:context=".activity_principiante">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:title="Rutina Nivel Principiante"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/rutina_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Objetivo: Mejorar movilidad y la resistencia cardiovascular básica\n\n1. Calentamiento: Marcha en el lugar - 3 minutos\n2. Sentadilla asistida: 3 series de 15 segundos\n3. Elevación de rodillas: 3 series de 15 segundos\n4. Flexiones de pared: 3 series de 8 repeticiones\n5. Estiramiento básico: 5 minutos"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

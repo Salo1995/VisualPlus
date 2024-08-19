@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">VisualPlus</string>
+    <string name="str_usuario">Ingresa tu correo</string>
+    <string name="str_contrasena">Ingresa tu Contraseña</string>
+    <string name="str_iniciar">Iniciar Sesion</string>
+    <string name="str_olvide">Olvide Contraseña  </string>
+    <string name="str_registro">   registrarse</string>
+    <string name="str_inicio">Iniciar Sesion</string>
+    <string name="str_principiante">Nivel Principiante</string>
+    <string name="str_intermedio">Nivel Intermedio</string>
+    <string name="str_avanzado">Nivel Avanzado</string>
+    <string name="str_recuperar">Recuperar Contraseña</string>
+    <string name="str_nombre">Ingresa tu Nombre</string>
+    <string name="str_apellido">Ingresa tu Apellido</string>
+    <string name="str_clave">Ingresa tu Clave</string>
+</resources>
