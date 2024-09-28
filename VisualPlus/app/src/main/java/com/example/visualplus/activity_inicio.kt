@@ -2,40 +2,75 @@ package com.example.visualplus
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.visualplus.ui.theme.VisualPlusTheme
 
-class activity_inicio : AppCompatActivity() {
-
-    private lateinit var loginBtninicio: Button
-    private lateinit var loginBtnregistro: Button
+class ActivityInicio : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_inicio)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // Usar setContent en lugar de setContentView
+        setContent {
+            VisualPlusTheme {
+                ActivityInicioScreen(
+                    onLoginClick = {
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    },
+                    onRegisterClick = {
+                        val intent = Intent(this, ActivityRegistro::class.java)
+                        startActivity(intent)
+                    }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ActivityInicioScreen(onLoginClick: () -> Unit, onRegisterClick: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        // Título del mensaje
+        Text(
+            text = "Ejercítate con confianza: alertas visuales y táctiles para ti",
+            fontSize = 18.sp
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón de inicio de sesión
+        Button(
+            onClick = onLoginClick,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 32.dp)
+        ) {
+            Text(text = "Iniciar Sesión", fontSize = 20.sp)
         }
 
-        loginBtninicio = findViewById(R.id.inicio_btn)
-
-        loginBtninicio.setOnClickListener {
-            // para redirigir boton de inicio de sesion
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        // Botón de registro
+        Button(
+            onClick = onRegisterClick,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 32.dp)
+        ) {
+            Text(text = "Registrarse", fontSize = 20.sp)
         }
-        loginBtnregistro = findViewById(R.id.registro_btn)
-
-        loginBtnregistro.setOnClickListener {
-            val intent = Intent(this, activity_registro::class.java)
-            startActivity(intent)
-        }
-
     }
 }
