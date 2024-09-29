@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.android.application") // Mantén solo esta declaración para el plugin de Android
+    id("org.jetbrains.kotlin.android") // Mantén solo esta declaración para Kotlin Android
+    id("com.google.gms.google-services") // Plugin para Google Services
 }
 
 android {
@@ -63,6 +64,7 @@ dependencies {
     // Opcional: para usar con LiveData o ViewModel en Jetpack Compose
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation(libs.firebase.firestore.ktx)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -72,4 +74,10 @@ dependencies {
     // Dependencias de depuración y herramientas de UI
     debugImplementation("androidx.compose.ui:ui-tooling:1.5.1")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.5.1")
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }
+
+apply(plugin = "com.google.gms.google-services")
