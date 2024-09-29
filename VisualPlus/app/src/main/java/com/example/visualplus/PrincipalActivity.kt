@@ -1,33 +1,123 @@
 package com.example.visualplus
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
-class PrincipalActivity : AppCompatActivity() {
-
-    private lateinit var Btnprincipiante: Button
-
+class PrincipalActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_principal)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContent {
+            MaterialTheme {
+                Surface {
+                    // Llamada a la pantalla PrincipalActivityScreen
+                    PrincipalActivityScreen(
+                        onPrincipianteClick = { /* Lógica para Principiante */ },
+                        onIntermedioClick = { /* Lógica para Intermedio */ },
+                        onAvanzadoClick = { /* Lógica para Avanzado */ }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PrincipalActivityScreen(
+    onPrincipianteClick: () -> Unit,
+    onIntermedioClick: () -> Unit,
+    onAvanzadoClick: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Toolbar (TopAppBar en lugar de Toolbar XML)
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Niveles Rutinas de ejercicios",
+                    fontSize = 25.sp,
+                    color = Color.White
+                )
+            },
+            modifier = Modifier.fillMaxWidth(),
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary,
+                titleContentColor = Color.White
+            )
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón de Principiante
+        Button(
+            onClick = onPrincipianteClick,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Black
+            ),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Text(
+                text = "Principiante",
+                fontSize = 20.sp,
+                color = Color.White
+            )
         }
 
-        Btnprincipiante = findViewById(R.id.principiante_btn)
+        Spacer(modifier = Modifier.height(16.dp))
 
-        Btnprincipiante.setOnClickListener {
+        // Botón de Intermedio
+        Button(
+            onClick = onIntermedioClick,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Black
+            ),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Text(
+                text = "Intermedio",
+                fontSize = 20.sp,
+                color = Color.White
+            )
+        }
 
-            val intent = Intent(this, activity_principiante::class.java)
-            startActivity(intent)
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón de Avanzado
+        Button(
+            onClick = onAvanzadoClick,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Black
+            ),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Text(
+                text = "Avanzado",
+                fontSize = 20.sp,
+                color = Color.White
+            )
         }
     }
 }

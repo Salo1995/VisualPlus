@@ -12,36 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VisualPlus"
         tools:targetApi="31">
-        
+
+
         <activity
-            android:name=".activity_principiante"
-            android:exported="false" />
-        
-        <activity
-            android:name=".activity_inicio"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity
-            android:name=".activity_registro"
-            android:exported="true" />
-        
-        <activity
-            android:name=".activity_recuperar"
-            android:exported="false" />
-        
+
+
         <activity
             android:name=".PrincipalActivity"
             android:exported="false" />
-        
         <activity
-            android:name=".MainActivity"
+            android:name=".activity_inicio"
             android:exported="false" />
-        
-    </application>
+        <activity
+            android:name=".activity_principiante"
+            android:exported="false" />
+        <activity
+            android:name=".activity_recuperar"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityRegistro"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
 
+    </application>
 </manifest>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "950456722900",
+    "project_id": "visualplus-66f84",
+    "storage_bucket": "visualplus-66f84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950456722900:android:d50ae293baf96d90a82241",
+        "android_client_info": {
+          "package_name": "com.example.visualplus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWAy6ptGNugPKL9qh8qjCxu6cwpvBHklw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

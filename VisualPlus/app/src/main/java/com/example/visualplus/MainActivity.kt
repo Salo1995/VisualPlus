@@ -1,35 +1,25 @@
 package com.example.visualplus
 
+import LoginScreen
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import android.content.Intent
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 
-
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var loginBtn: Button
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContent {
+            MaterialTheme {
+                Surface {
+                    LoginScreen(
+                        onLoginClick = { /* Implementa la lógica de inicio de sesión */ },
+                        onRegisterClick = { /* Implementa la lógica de registro */ },
+                        onRecoverClick = { /* Implementa la lógica de recuperación de contraseña */ }
+                    )
+                }
+            }
         }
-
-        loginBtn = findViewById(R.id.login_btn)
-
-        loginBtn.setOnClickListener {
-            // para redirigir boton de inicio de sesion
-            val intent = Intent(this, PrincipalActivity::class.java)
-            startActivity(intent)
-        }
-
     }
 }
