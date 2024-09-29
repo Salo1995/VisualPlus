@@ -1,38 +1,86 @@
 package com.example.visualplus
 
 import android.os.Bundle
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
-class activity_principiante : AppCompatActivity() {
+class activity_principiante : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_principiante)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContent {
+            MaterialTheme {
+                Surface {
+                    ActivityPrincipianteScreen()
+                }
+            }
         }
+    }
+}
 
-        // Definir array de rutina de principiante
-        val rutinaPrincipiante = arrayOf(
-            "Objetivo: Mejorar movilidad y la resistencia cardiovascular basica.",
-            "1. Calentamiento: Marcha en el lugar - 3 minutos",
-            "2. Sentadilla asistida: 3 series de 15 segundos",
-            "3. Elevación de rodillas: 3 series de 15 segundos",
-            "4. Flexiones de pared: 3 series de 8 repeticiones",
-            "5. Estiramiento básico: 5 minutos"
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ActivityPrincipianteScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        // Imagen de fondo
+        Image(
+            painter = painterResource(id = R.drawable.my_backgroun),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
         )
 
-        val textView: TextView = findViewById(R.id.rutina_text)
+        // Contenido sobre la imagen
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            // Toolbar (TopAppBar en lugar de Toolbar XML)
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "Rutina Nivel Principiante",
+                        fontSize = 25.sp,
+                        color = Color.White
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = Color.White
+                )
+            )
 
-        // Concatenar las rutinas
-        val concatenatedRutinaPrincipiante = rutinaPrincipiante.joinToString(separator = "\n\n")
+            Spacer(modifier = Modifier.height(16.dp))
 
-        textView.text = concatenatedRutinaPrincipiante
+            // Rutina (TextView en XML)
+            Text(
+                text = "Objetivo: Mejorar movilidad y la resistencia cardiovascular básica\n\n" +
+                        "1. Calentamiento: Marcha en el lugar - 3 minutos\n" +
+                        "2. Sentadilla asistida: 3 series de 15 segundos\n" +
+                        "3. Elevación de rodillas: 3 series de 15 segundos\n" +
+                        "4. Flexiones de pared: 3 series de 8 repeticiones\n" +
+                        "5. Estiramiento básico: 5 minutos",
+                fontSize = 18.sp,
+                color = Color.Black,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                lineHeight = 24.sp
+            )
+        }
     }
 }
