@@ -67,6 +67,7 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
 
     testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit.jupiter)
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.1")
@@ -78,6 +79,11 @@ dependencies {
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
     implementation("com.google.firebase:firebase-analytics")
+
+    // Retrofit para llamadas HTTP
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    // Gson converter para Retrofit
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
 
 apply(plugin = "com.google.gms.google-services")
