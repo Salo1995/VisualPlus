@@ -20,6 +20,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <uses-permission android:name="android.permission.INTERNET" />
             </intent-filter>
         </activity>
 
@@ -41,6 +42,9 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".`RutinaActivity.kt`"
             android:exported="false" />
 
     </application>

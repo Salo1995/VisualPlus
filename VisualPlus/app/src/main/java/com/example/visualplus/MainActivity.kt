@@ -1,6 +1,6 @@
 package com.example.visualplus
 
-import LoginScreen
+import com.example.visualplus.LoginScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
