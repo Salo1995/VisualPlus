@@ -27,9 +27,9 @@ object RutinaRepository {
     }
 
     // Función para actualizar una rutina
-    fun updateRutina(rutinaId: String, updatedData: Map<String, Any>, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+    fun updateRutina(rutinaId: String, newDuracion: Int, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         db.collection("rutinas").document(rutinaId)
-            .update(updatedData)
+            .update("duracion", newDuracion)
             .addOnSuccessListener { onSuccess() }
             .addOnFailureListener { e -> onFailure(e) }
     }

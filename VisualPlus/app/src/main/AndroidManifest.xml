@@ -20,7 +20,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <uses-permission android:name="android.permission.INTERNET" />
+                <uses-permission android:name="android.permission.INTERNET"
+                    tools:ignore="WrongManifestParent" />
             </intent-filter>
         </activity>
 
@@ -44,7 +45,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".`RutinaActivity.kt`"
+            android:name=".RutinaActivity"
             android:exported="false" />
 
     </application>
